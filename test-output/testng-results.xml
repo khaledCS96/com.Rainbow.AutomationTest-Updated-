@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="7" passed="7" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2022-04-12T06:06:04 EEST" name="COM Rainbow Test" finished-at="2022-04-12T06:08:25 EEST" duration-ms="140212">
+    <groups>
+    </groups>
+    <test started-at="2022-04-12T06:06:04 EEST" name="End To End Test" finished-at="2022-04-12T06:08:25 EEST" duration-ms="140212">
+      <class name="com.Rainbow.Testcases.ReadWriteDataFromCSV">
+        <test-method is-config="true" signature="login()[pri:0, instance:com.Rainbow.Testcases.ReadWriteDataFromCSV@fba92d3]" started-at="2022-04-12T06:07:36 EEST" name="login" finished-at="2022-04-12T06:08:00 EEST" duration-ms="24089" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- login -->
+        <test-method signature="SearchAndWriteDataToCsvTest([Ljava.lang.String;)[pri:0, instance:com.Rainbow.Testcases.ReadWriteDataFromCSV@fba92d3]" started-at="2022-04-12T06:08:00 EEST" name="SearchAndWriteDataToCsvTest" data-provider="readCSVData" finished-at="2022-04-12T06:08:02 EEST" duration-ms="1861" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[Ljava.lang.String;@ed2f2f6]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- SearchAndWriteDataToCsvTest -->
+        <test-method is-config="true" signature="afterMethod()[pri:0, instance:com.Rainbow.Testcases.ReadWriteDataFromCSV@fba92d3]" started-at="2022-04-12T06:08:02 EEST" name="afterMethod" finished-at="2022-04-12T06:08:03 EEST" duration-ms="406" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method is-config="true" signature="login()[pri:0, instance:com.Rainbow.Testcases.ReadWriteDataFromCSV@fba92d3]" started-at="2022-04-12T06:08:03 EEST" name="login" finished-at="2022-04-12T06:08:22 EEST" duration-ms="19959" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- login -->
+        <test-method signature="SearchAndWriteDataToCsvTest([Ljava.lang.String;)[pri:0, instance:com.Rainbow.Testcases.ReadWriteDataFromCSV@fba92d3]" started-at="2022-04-12T06:08:22 EEST" name="SearchAndWriteDataToCsvTest" data-provider="readCSVData" finished-at="2022-04-12T06:08:24 EEST" duration-ms="1698" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[Ljava.lang.String;@79696332]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- SearchAndWriteDataToCsvTest -->
+        <test-method is-config="true" signature="afterMethod()[pri:0, instance:com.Rainbow.Testcases.ReadWriteDataFromCSV@fba92d3]" started-at="2022-04-12T06:08:24 EEST" name="afterMethod" finished-at="2022-04-12T06:08:25 EEST" duration-ms="387" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+      </class> <!-- com.Rainbow.Testcases.ReadWriteDataFromCSV -->
+      <class name="com.Rainbow.Testcases.LoginPageTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.Rainbow.Testcases.LoginPageTest@5ace1ed4]" started-at="2022-04-12T06:06:04 EEST" name="setUp" finished-at="2022-04-12T06:06:08 EEST" duration-ms="3263" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="LoginPage(java.lang.String,java.lang.String)[pri:0, instance:com.Rainbow.Testcases.LoginPageTest@5ace1ed4]" started-at="2022-04-12T06:06:08 EEST" name="LoginPage" data-provider="Mydata" finished-at="2022-04-12T06:06:28 EEST" duration-ms="20431" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[khaled.khoof.96@gmail.com]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Kh_123456]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- LoginPage -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.Rainbow.Testcases.LoginPageTest@5ace1ed4]" started-at="2022-04-12T06:06:28 EEST" name="tearDown" finished-at="2022-04-12T06:06:29 EEST" duration-ms="433" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.Rainbow.Testcases.LoginPageTest@5ace1ed4]" started-at="2022-04-12T06:06:29 EEST" name="setUp" finished-at="2022-04-12T06:06:31 EEST" duration-ms="2591" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="LoginPage(java.lang.String,java.lang.String)[pri:0, instance:com.Rainbow.Testcases.LoginPageTest@5ace1ed4]" started-at="2022-04-12T06:06:31 EEST" name="LoginPage" data-provider="Mydata" finished-at="2022-04-12T06:06:41 EEST" duration-ms="9352" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[khaled.khoof.96@gmail.com]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Kh_1234561]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- LoginPage -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.Rainbow.Testcases.LoginPageTest@5ace1ed4]" started-at="2022-04-12T06:06:41 EEST" name="tearDown" finished-at="2022-04-12T06:06:41 EEST" duration-ms="403" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.Rainbow.Testcases.LoginPageTest@5ace1ed4]" started-at="2022-04-12T06:06:41 EEST" name="setUp" finished-at="2022-04-12T06:06:43 EEST" duration-ms="2281" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="LoginPage(java.lang.String,java.lang.String)[pri:0, instance:com.Rainbow.Testcases.LoginPageTest@5ace1ed4]" started-at="2022-04-12T06:06:43 EEST" name="LoginPage" data-provider="Mydata" finished-at="2022-04-12T06:06:52 EEST" duration-ms="8368" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[khaled.96@gmail.com]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Kh_123456]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- LoginPage -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.Rainbow.Testcases.LoginPageTest@5ace1ed4]" started-at="2022-04-12T06:06:52 EEST" name="tearDown" finished-at="2022-04-12T06:06:52 EEST" duration-ms="383" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.Rainbow.Testcases.LoginPageTest@5ace1ed4]" started-at="2022-04-12T06:06:52 EEST" name="setUp" finished-at="2022-04-12T06:06:55 EEST" duration-ms="2741" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="LoginPage(java.lang.String,java.lang.String)[pri:0, instance:com.Rainbow.Testcases.LoginPageTest@5ace1ed4]" started-at="2022-04-12T06:06:55 EEST" name="LoginPage" data-provider="Mydata" finished-at="2022-04-12T06:07:12 EEST" duration-ms="17664" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[khaled.96@gmail.com]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Kh_1234561]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- LoginPage -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.Rainbow.Testcases.LoginPageTest@5ace1ed4]" started-at="2022-04-12T06:07:12 EEST" name="tearDown" finished-at="2022-04-12T06:07:13 EEST" duration-ms="372" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.Rainbow.Testcases.LoginPageTest -->
+      <class name="com.Rainbow.Testcases.ConversationTest">
+        <test-method is-config="true" signature="login()[pri:0, instance:com.Rainbow.Testcases.ConversationTest@67c33749]" started-at="2022-04-12T06:07:13 EEST" name="login" finished-at="2022-04-12T06:07:32 EEST" duration-ms="19155" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- login -->
+        <test-method signature="ConversationTest()[pri:0, instance:com.Rainbow.Testcases.ConversationTest@67c33749]" started-at="2022-04-12T06:07:32 EEST" name="ConversationTest" finished-at="2022-04-12T06:07:36 EEST" duration-ms="3818" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- ConversationTest -->
+        <test-method is-config="true" signature="afterMethod()[pri:0, instance:com.Rainbow.Testcases.ConversationTest@67c33749]" started-at="2022-04-12T06:07:36 EEST" name="afterMethod" finished-at="2022-04-12T06:07:36 EEST" duration-ms="412" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+      </class> <!-- com.Rainbow.Testcases.ConversationTest -->
+    </test> <!-- End To End Test -->
+  </suite> <!-- COM Rainbow Test -->
+</testng-results>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Free CRM Rainbow Test]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="End To End Test(failed)">
+    <classes>
+      <class name="com.Rainbow.Testcases.ReadDataFromCSV">
+        <methods>
+          <include name="GetSearch"/>
+          <include name="login"/>
+        </methods>
+      </class> <!-- com.Rainbow.Testcases.ReadDataFromCSV -->
+    </classes>
+  </test> <!-- End To End Test(failed) -->
+</suite> <!-- Failed suite [Free CRM Rainbow Test] -->
