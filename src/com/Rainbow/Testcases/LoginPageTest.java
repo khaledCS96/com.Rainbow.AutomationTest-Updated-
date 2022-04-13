@@ -59,13 +59,13 @@ public class LoginPageTest extends TestBase {
 	 }
 	 
 		
-	  if (userName==prop.getProperty("wrongPassword") | Password==prop.getProperty("wrongPassword")) {
+	  if (userName==prop.getProperty("wrongUserName") | Password==prop.getProperty("wrongPassword")) {
 		 WebElement Incorrectusernameorpassword  = new WebDriverWait(driver, 20).
 					until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//div[@ng-if='!$ctrl.isErrorCode'])[1]")));
 		 Thread.sleep(1000); //Wait a second for the message to turn into a user or password error message
 		 String wrongloginMessageActualResult= Incorrectusernameorpassword.getText();
 		 String wrongloginMessageExpectedResult="Incorrect username or password"; 
-		 Assert.assertEquals(wrongloginMessageActualResult, wrongloginMessageExpectedResult ,"Login to the System successful" );  //negative Test (pass if login unsuccessful)
+		 Assert.assertEquals(wrongloginMessageActualResult, wrongloginMessageExpectedResult ,"Login to the System successful Or Error message in the username or password did not appear" );  //negative Test (pass if login unsuccessful)
 		 
 	 }
 	
