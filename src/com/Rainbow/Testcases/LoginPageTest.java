@@ -52,16 +52,21 @@ public class LoginPageTest extends TestBase {
 	 
 	 if(userName==prop.getProperty("userName") && Password==prop.getProperty("password") ) 
 	 {
-		 Thread.sleep(10000);// Wait to Load Page After Login
+		 Thread.sleep(12000);// Wait to Load Login Page 
+		 String actualResult = driver.getCurrentUrl();
+		 String ExpectedReslt ="https://web.openrainbow.net/rb/2.103.0/index.html#/main/home";
+		 Assert.assertEquals(actualResult, ExpectedReslt ,"Login to the System unsuccessful" ); //Positive Test (pass if Login successful )
 	 }
 	 
-	 String actualResult = driver.getCurrentUrl();
-	 String ExpectedReslt ="https://web.openrainbow.net/rb/2.103.0/index.html#/main/home";
-	 
-	 if(actualResult==ExpectedReslt) {
-		 Assert.assertTrue(true,"Login to the System unsuccessful"); //Positive Test (pass if Login successful )
-	 }else {
-		 Assert.assertFalse(false,"Login to the System successful"); //negative Test (pass if login unsuccessful)
+		
+	  if (userName==prop.getProperty("wrongPassword") | Password==prop.getProperty("wrongPassword")) {
+		 WebElement Incorrectusernameorpassword  = new WebDriverWait(driver, 20).
+					until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//div[@ng-if='!$ctrl.isErrorCode'])[1]")));
+		 Thread.sleep(1000); //Wait a second for the message to turn into a user or password error message
+		 String wrongloginMessageActualResult= Incorrectusernameorpassword.getText();
+		 String wrongloginMessageExpectedResult="Incorrect username or password"; 
+		 Assert.assertEquals(wrongloginMessageActualResult, wrongloginMessageExpectedResult ,"Login to the System successful" );  //negative Test (pass if login unsuccessful)
+		 
 	 }
 	
 	 }
