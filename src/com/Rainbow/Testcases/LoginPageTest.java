@@ -26,7 +26,6 @@ public class LoginPageTest extends TestBase {
 	@BeforeMethod
 	public void setUp() {
 		inittializationWithOption();
-		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		
 	}
 
@@ -42,7 +41,7 @@ public class LoginPageTest extends TestBase {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class='c-button__label']"))).click(); //Click on the Continue Button
 		
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("authPwd"))).click(); //Click on Password TextBox
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("authPwd"))).sendKeys(Password); //Send Password to Password TextBox
+           wait.until(ExpectedConditions.elementToBeClickable(By.id("authPwd"))).sendKeys(Password); //Send Password to Password TextBox
         
 	    wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[@class='c-button__label']"))).click(); //Click on the Continue Button
 
