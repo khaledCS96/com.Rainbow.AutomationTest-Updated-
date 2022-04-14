@@ -1,6 +1,8 @@
 package com.Rainbow.Testcases;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -19,10 +21,12 @@ public class LoginPageTest extends TestBase {
 	public LoginPageTest() throws IOException {
 		super();
 		// TODO Auto-generated constructor stub
+		
 	}
 	@BeforeMethod
 	public void setUp() {
 		inittializationWithOption();
+		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		
 	}
 
@@ -30,43 +34,30 @@ public class LoginPageTest extends TestBase {
 
 	public void LoginPage(String userName, String Password) throws InterruptedException {
 		
-		WebElement EmailText = new WebDriverWait(driver, 20).
-				until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='username']")));
+		WebDriverWait wait = new WebDriverWait(driver, 12);
 		
-		EmailText.click();
-		EmailText.sendKeys(userName);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@id='username']"))).click();  //Click on the email TextBox
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='username']"))).sendKeys(userName); //Send email to email TextBox
 		
-		WebElement continueButton = new WebDriverWait(driver, 20).
-				until(ExpectedConditions.elementToBeClickable(By.xpath("//span[@class='c-button__label']")));
-		Thread.sleep(500);
-	continueButton.click(); 
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class='c-button__label']"))).click(); //Click on the Continue Button
+		
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("authPwd"))).click(); //Click on Password TextBox
+        wait.until(ExpectedConditions.elementToBeClickable(By.id("authPwd"))).sendKeys(Password); //Send Password to Password TextBox
+        
+	    wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[@class='c-button__label']"))).click(); //Click on the Continue Button
 
-	WebElement PasswordText = new WebDriverWait(driver, 20).
-			until(ExpectedConditions.elementToBeClickable(By.id("authPwd")));
-	
-	 PasswordText.sendKeys(Password);
-		Thread.sleep(500);
-	 continueButton.click();
-		Thread.sleep(500);
-	 
-	 
+	    
+	    
 	 if(userName==prop.getProperty("userName") && Password==prop.getProperty("password") ) 
 	 {
-		 Thread.sleep(12000);// Wait to Load Login Page 
-		 String actualResult = driver.getCurrentUrl();
-		 String ExpectedReslt ="https://web.openrainbow.net/rb/2.103.0/index.html#/main/home";
-		 Assert.assertEquals(actualResult, ExpectedReslt ,"Login to the System unsuccessful" ); //Positive Test (pass if Login successful )
-	 }
-	 
+		 boolean actualResult = wait.until(ExpectedConditions.urlToBe("https://web.openrainbow.net/rb/2.103.0/index.html#/main/home"));// Wait to Load Login Page
+		 Assert.assertTrue(actualResult ,"Login to the System unsuccessful" ); //Positive Test (pass if Login successful )
 		
+	 }
+	 	
 	  if (userName==prop.getProperty("wrongUserName") | Password==prop.getProperty("wrongPassword")) {
-		 WebElement Incorrectusernameorpassword  = new WebDriverWait(driver, 20).
-					until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//div[@ng-if='!$ctrl.isErrorCode'])[1]")));
-		 Thread.sleep(1000); //Wait a second for the message to turn into a user or password error message
-		 String wrongloginMessageActualResult= Incorrectusernameorpassword.getText();
-		 String wrongloginMessageExpectedResult="Incorrect username or password"; 
-		 Assert.assertEquals(wrongloginMessageActualResult, wrongloginMessageExpectedResult ,"Login to the System successful Or Error message in the username or password did not appear" );  //negative Test (pass if login unsuccessful)
-		 
+		boolean actualResult = wait.until(ExpectedConditions.textToBe(By.xpath("(//div[@ng-if='!$ctrl.isErrorCode'])[1]"), "Incorrect username or password"));
+		 Assert.assertTrue(actualResult ,"Login to the System successful Or Error message in the username or password did not appear" );//negative Test (pass if login unsuccessful)
 	 }
 	
 	 }

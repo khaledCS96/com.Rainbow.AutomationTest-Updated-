@@ -6,6 +6,8 @@ import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.concurrent.TimeUnit;
+
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
 import org.apache.commons.csv.CSVRecord;
@@ -24,6 +26,8 @@ import com.Rainbow.base.TestBase;
 
 public class ReadWriteDataFromCSV extends TestBase{
 	
+	public static WebDriverWait wait;
+	
 	public ReadWriteDataFromCSV() throws IOException {
 		super();
 
@@ -35,33 +39,32 @@ public class ReadWriteDataFromCSV extends TestBase{
 				"D:\\KhaledProjects\\Selenium\\Selenium\\RainbowApplicationTest\\src\\com\\Rainbow\\TestData\\Createcsv.csv";
 	@BeforeMethod
 	public void login( ) throws InterruptedException {
-		
 		inittializationWithOption();
+		wait  = new WebDriverWait(driver, 12);
+		 
+		wait.until(ExpectedConditions.visibilityOfElementLocated
+				(By.xpath("//input[@id='username']"))).click();  //Click on the email TextBox
 		
-			WebElement EmailText = new WebDriverWait(driver, 20).
-					until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='username']")));
-			EmailText.click();
-			EmailText.sendKeys(prop.getProperty("userName"));
-			  		
-			
-			WebElement continueButton = new WebDriverWait(driver, 20).
-					until(ExpectedConditions.elementToBeClickable(By.xpath("//span[@class='c-button__label']")));
-			Thread.sleep(1000);
-		    continueButton.click(); 
-
-		    WebElement PasswordText = new WebDriverWait(driver, 20).
-				    until(ExpectedConditions.elementToBeClickable(By.id("authPwd")));
-	
-		   PasswordText.sendKeys(prop.getProperty("password"));
-		   continueButton.click(); 
-		   
-		   WebElement Whatsnew = new WebDriverWait(driver, 20).
-					until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"popup\"]/userwindow/userwindow-header/div/button")));
-		    Whatsnew.click(); 
-		    
-		   WebElement WelcomeScreen = new WebDriverWait(driver, 20).
-					until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"popup\"]/userwindow/userwindow-footer/div/square-button[1]")));
-	        WelcomeScreen.click(); 
+		wait.until(ExpectedConditions.visibilityOfElementLocated
+				(By.xpath("//input[@id='username']"))).sendKeys(prop.getProperty("userName"));  //Send email to email TextBox
+		
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath
+				("//span[@class='c-button__label']"))).click();     //Click on the Continue Button
+		
+		wait.until(ExpectedConditions.visibilityOfElementLocated
+				(By.id("authPwd"))).click();       //Click on Password TextBox
+		
+        wait.until(ExpectedConditions.visibilityOfElementLocated
+        		(By.id("authPwd"))).sendKeys(prop.getProperty("password")); //Send Password to Password TextBox
+        
+	    wait.until(ExpectedConditions.elementToBeClickable
+	    		(By.xpath("//span[@class='c-button__label']"))).click(); //Click on the Continue Button
+	    
+	    wait.until(ExpectedConditions.elementToBeClickable
+	    		(By.xpath("//*[@id=\"popup\"]/userwindow/userwindow-header/div/button"))).click(); //Click on the whatsNew Button After Login
+	    
+	    wait.until(ExpectedConditions.elementToBeClickable
+	    		(By.xpath("//*[@id=\"popup\"]/userwindow/userwindow-footer/div/square-button[1]"))).click();//Click on the Welcome Screen Button After Login
 
 	}
 //(
@@ -69,7 +72,7 @@ public class ReadWriteDataFromCSV extends TestBase{
 	public  void SearchAndWriteDataToCsvTest(String[] nameFromSearch) throws IOException {
 		String username1 = nameFromSearch[0];
 		boolean staleElement = true; 
-		WebElement searchName = new WebDriverWait(driver, 30).
+		WebElement searchName = wait.
 				until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//input[@placeholder='People, bubbles...'])[1]")));
      searchName.sendKeys(username1);
 		 //It is used so that the page does not fail when recent conversations appear
@@ -77,17 +80,16 @@ public class ReadWriteDataFromCSV extends TestBase{
 		  try{
 			     
 				   
-				   
-			       WebElement Firstindex = new WebDriverWait(driver, 30).
+				   //Get the results of the first three searches
+			       WebElement Firstindex = wait.
 					         until(ExpectedConditions.visibilityOfElementLocated(
 						         	By.xpath("//*[@id=\"leftArea\"]/conversations/div/div/div/conversation-cell[1]/div/div/div[1]/p")));
 			
-			       WebElement Secondindex = new WebDriverWait(driver, 30).
+			       WebElement Secondindex = wait.
 					         until(ExpectedConditions.visibilityOfElementLocated(
 					         		By.xpath("//*[@id=\"leftArea\"]/conversations/div/div/div/conversation-cell[2]/div/div/div[1]/p/span")));
-			       WebElement Thardindex = new WebDriverWait(driver, 30).
+			       WebElement Thardindex = wait.
 					         until(ExpectedConditions.visibilityOfElementLocated(
-						       
 					        		 By.xpath("//*[@id=\"leftArea\"]/conversations/div/div/div/conversation-cell[3]/div/div/div[1]/p")));
 			       //-Get the first 3 results and write them to CSV file.
 			       String firstName = Firstindex.getText();

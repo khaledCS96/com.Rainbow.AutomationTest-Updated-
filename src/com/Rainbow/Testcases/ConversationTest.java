@@ -1,6 +1,8 @@
 package com.Rainbow.Testcases;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -14,6 +16,7 @@ import org.testng.annotations.Test;
 
 import com.Rainbow.base.TestBase;
 public class ConversationTest extends TestBase {
+	public static WebDriverWait wait ;
 	
 	public ConversationTest() throws IOException {
 		super();
@@ -22,59 +25,55 @@ public class ConversationTest extends TestBase {
 	@BeforeMethod
 	public void login() throws InterruptedException {	 
 		inittializationWithOption();
-			WebElement EmailText = new WebDriverWait(driver, 20).
-					until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='username']")));
-			
-			EmailText.click();
-			EmailText.sendKeys(prop.getProperty("userName"));		
-			
-			WebElement continueButton = new WebDriverWait(driver, 20).
-					until(ExpectedConditions.elementToBeClickable(By.xpath("//span[@class='c-button__label']")));
-			
-			Thread.sleep(500);
-		    continueButton.click(); 
 		
-		   WebElement PasswordText = new WebDriverWait(driver, 20).
-				    until(ExpectedConditions.elementToBeClickable(By.id("authPwd")));
+		 wait  = new WebDriverWait(driver, 12);
+		wait.until(ExpectedConditions.visibilityOfElementLocated
+				(By.xpath("//input[@id='username']"))).click();  //Click on the email TextBox
 		
-		 PasswordText.sendKeys(prop.getProperty("password"));
-		 
-		 Thread.sleep(500);
-		 continueButton.click(); 
-		 
-		 WebElement Whatsnew = new WebDriverWait(driver, 20).
-					until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"popup\"]/userwindow/userwindow-header/div/button")));
-		 Whatsnew.click(); 
-		 
-		 WebElement WelcomeScreen = new WebDriverWait(driver, 20).
-					until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"popup\"]/userwindow/userwindow-footer/div/square-button[1]")));
-	     WelcomeScreen.click(); 	
+		wait.until(ExpectedConditions.visibilityOfElementLocated
+				(By.xpath("//input[@id='username']"))).sendKeys(prop.getProperty("userName")); //Send email to email TextBox
+		
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath
+				("//span[@class='c-button__label']"))).click(); //Click on the Continue Button
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("authPwd"))).click(); //Send Password to Password TextBox
+        wait.until(ExpectedConditions.visibilityOfElementLocated
+        		(By.id("authPwd"))).sendKeys(prop.getProperty("password")); //Send Password to Password TextBox
+    
+        
+	    wait.until(ExpectedConditions.elementToBeClickable
+	    		(By.xpath("//span[@class='c-button__label']"))).click(); //Click on the Continue Button
+	    
+	    wait.until(ExpectedConditions.elementToBeClickable
+	    		(By.xpath("//*[@id=\"popup\"]/userwindow/userwindow-header/div/button"))).click(); //Click on the whatsNew Button After Login
+	    
+	    wait.until(ExpectedConditions.elementToBeClickable
+	    		(By.xpath("//*[@id=\"popup\"]/userwindow/userwindow-footer/div/square-button[1]"))).click();//Click on the Welcome Screen Button After Login
+	
 	}
 	
 	@Test
-	public  void ConversationTest() throws IOException {   
-	//	driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+	public  void ConversationTest(){   
+		 wait  = new WebDriverWait(driver, 12);
 		Actions action = new Actions(driver);
-		WebElement searchName = new WebDriverWait(driver, 30).
+		
+		WebElement searchName = wait.
 				until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//input[@placeholder='People, bubbles...'])[1]")));
-		searchName.sendKeys("Maysam"); 
+		searchName.sendKeys("Maysam"); //Type a name in the search TextBox
 		
-		WebElement choiceName = new WebDriverWait(driver, 30).
+		WebElement choiceName = wait.
 				until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//div[contains(@class,'conversation-cell__infos')])[1]")));
-		choiceName.click(); 
+		choiceName.click(); //choice First Name from result after search TextBox 
 
-		WebElement messageText = new WebDriverWait(driver, 30).
+		WebElement messageText = wait.
 				until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//div[@placeholder='Enter your text here...'])[1]")));
-		messageText.click();
+		messageText.click(); //click on messageTexBox
 		
-		action.sendKeys("Hello Maysam!",Keys.chord(Keys.ENTER)).build().perform();
-		WebElement statusMessageText =	new WebDriverWait(driver, 10).
-		until(ExpectedConditions.visibilityOfElementLocated(
-					By.xpath("(//div[@class='chat-view-item__bubble'])[24]")));
-		
-		System.out.println(statusMessageText.isDisplayed());
-		
-		Assert.assertTrue(statusMessageText.isDisplayed(),"The message was not sent successfully");
+		action.sendKeys("Hello Maysam!",Keys.chord(Keys.ENTER)).build().perform(); //Write and send a message
+		boolean statusMessageText =	wait.
+		        until(ExpectedConditions.visibilityOfElementLocated(
+		        		By.xpath("(//div[@class='chat-view-item__bubble'])[1]"))).isDisplayed();//Check that the message has been sent successfully
+
+		Assert.assertTrue(statusMessageText,"The message was not sent successfully"); 
 	
       }
 	@AfterMethod()
